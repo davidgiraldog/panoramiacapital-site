@@ -27,6 +27,20 @@
       height: calc(100dvh + 36px); /* mobile Safari viewport fix */
       border: none;
     }
+    /* The host card's 12px corner radius can't be fully cropped without
+       cutting real app content, so the top corners show a tiny sliver of
+       page background over the app's dark header (#525252, --bg-chrome).
+       These patches paint exactly the area outside the rounded arc. */
+    .corner {
+      position: fixed;
+      top: 0;
+      width: 12px;
+      height: 12px;
+      z-index: 2;
+      pointer-events: none;
+    }
+    .corner.left  { left: 0;  background: radial-gradient(circle 16px at 10px 10px, transparent 9.5px, #525252 10px); }
+    .corner.right { right: 0; background: radial-gradient(circle 16px at 2px 10px,  transparent 9.5px, #525252 10px); }
     #loading {
       position: fixed;
       inset: 0;
@@ -45,6 +59,8 @@
 </head>
 <body>
   <div id="loading">Panoramia Capital</div>
+  <div class="corner left"></div>
+  <div class="corner right"></div>
   <iframe
     id="app"
     src="https://panoramiacapital.streamlit.app/?embed=true"
