@@ -8,8 +8,8 @@ browser URL stays on our domain.
 ## One-time setup
 
 ### 1. Point the iframe at the app
-In `index.html`, replace `REPLACE-WITH-YOUR-SUBDOMAIN.streamlit.app` with the
-app's real URL (keep the `/?embed=true` suffix).
+`index.html` embeds `https://panoramiacapital.streamlit.app/?embed=true`.
+If the app's subdomain ever changes, update it there (keep `/?embed=true`).
 
 ### 2. Create the GitHub repo and enable Pages
 ```
